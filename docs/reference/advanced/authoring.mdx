@@ -1,24 +1,59 @@
 # Authoring in MDX
 
-This page demonstrates advanced MDX shortcodes available in the template.
+This page covers conventions and tips for writing docs content in Markdown and MDX.
 
-## Callouts
+## Frontmatter
 
-<Callout type="tip" title="Tip">
-  Use callouts to highlight important information.
-</Callout>
+Every doc file should include at least a `title`. Optional frontmatter controls sidebar behavior and SEO.
 
-## Data Table
+```mdx
+---
+title: Authoring in MDX
+description: Conventions for writing docs content.
+sidebar:
+  order: 1
+  label: Authoring
+---
+```
 
-<DataTable
-  columns={[
-    { key: "name", header: "Name", sortable: true },
-    { key: "value", header: "Value", align: "right", sortable: true },
-  ]}
-  data={[
-    { name: "Alpha", value: "1" },
-    { name: "Beta", value: "2" },
-  ]}
-  sortable
-  searchable
+- `title` — page title, used in the hero and browser tab.
+- `description` — optional short summary for SEO.
+- `sidebar.order` — position within the parent section.
+- `sidebar.label` — override the default label in the sidebar.
+
+## Internal links
+
+Use relative paths without the `.md` extension. The `nukehub-sync-docs` CLI rewrites links during the sync step.
+
+```mdx
+Read the [getting started guide](../../tutorials/getting-started/).
+```
+
+## Shortcodes
+
+The template exposes a set of MDX shortcodes. See [MDX Components](../mdx-components/) for the full catalog and live examples, including callouts, tabs, diagrams, data tables, charts, and 3D models.
+
+## Drafts
+
+Mark a page as a draft to exclude it from the build:
+
+```mdx
+---
+title: Work in progress
+draft: true
+---
+```
+
+## Images and assets
+
+Place static assets in the `public/` directory and reference them by root-relative URL:
+
+```mdx
+<ImageFigure
+  src="/docs-template/favicon.svg"
+  alt="Docs template logo"
+  caption="The docs template logo."
 />
+```
+
+For `.glb` models used with `<Model3D>`, place the model in `public/` as well.

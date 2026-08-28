@@ -12,8 +12,23 @@ export default defineConfig({
   base: SITE.base,
   output: "static",
   integrations: [react(), mdx(), sitemap(), markdownNegotiation()],
+  markdown: {
+    shikiConfig: {
+      themes: {
+        light: "github-light",
+        dark: "github-dark",
+      },
+      wrap: true,
+    },
+  },
   vite: {
     plugins: [tailwindcss()],
+    resolve: {
+      dedupe: ["react", "react-dom", "lucide-react", "framer-motion"],
+    },
+    ssr: {
+      noExternal: ["@nukehub/docs-kit", "framer-motion"],
+    },
     build: {
       sourcemap: true,
     },

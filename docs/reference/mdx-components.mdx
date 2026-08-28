@@ -134,11 +134,11 @@ Use `<Steps>` and `<Step>` for numbered procedures.
 Use `<YouTube>` or `<Odysee>` for responsive video embeds.
 
 ```mdx
-<YouTube id="dQw4w9WgXcQ" title="Getting started" />
+<YouTube id="AWggjaUOldo" title="Unifying the Open-Source Nuclear Landscape: The NukeHub Vision" />
 <Odysee claimName="video-name" claimId="abc123" title="Backup mirror" />
 ```
 
-<YouTube id="dQw4w9WgXcQ" title="Getting started" />
+<YouTube id="AWggjaUOldo" title="Unifying the Open-Source Nuclear Landscape: The NukeHub Vision" />
 <Odysee claimName="getting-started" claimId="abc123" title="Backup mirror" />
 
 ## Figures with lightbox
@@ -158,6 +158,52 @@ Use `<ImageFigure>` for screenshots and diagrams. Click the image to open a ligh
   alt="Docs template logo"
   caption="The docs template logo."
 />
+
+## Plotly charts
+
+Use `<Plotly>` for interactive charts. Plotly is loaded on demand and renders client-side.
+
+```mdx
+<Plotly
+  data={[
+    {
+      x: [1, 2, 3, 4, 5],
+      y: [1, 4, 9, 16, 25],
+      type: "scatter",
+      mode: "lines+markers",
+      marker: { color: "#3b82f6" },
+    },
+  ]}
+  layout={{ title: "Quadratic growth" }}
+/>
+```
+
+<Plotly
+  data={[
+    {
+      x: [1, 2, 3, 4, 5],
+      y: [1, 4, 9, 16, 25],
+      type: "scatter",
+      mode: "lines+markers",
+      marker: { color: "#3b82f6" },
+    },
+  ]}
+  layout={{ title: "Quadratic growth" }}
+/>
+
+## 3D models
+
+Use `<Model3D>` to embed interactive `.glb` models. Three.js is loaded on demand and renders client-side.
+
+```mdx
+<Model3D
+  src="/docs-template/models/example.glb"
+  caption="A sample interactive model."
+  autoRotate
+/>
+```
+
+Place the `.glb` file in `public/` (or any served asset path) and reference it by URL.
 
 ## Data tables
 
@@ -190,3 +236,42 @@ Use `<DataTable>` for sortable, searchable, paginated reference tables.
   sortable
   searchable
 />
+
+
+## Code blocks
+
+Standard Markdown code fences are syntax highlighted with Shiki.
+
+### Python
+
+```python
+from nucleide import from_formula
+
+comp = from_formula("UO2")
+print(comp)
+
+for nuclide, fraction in comp.items():
+    print(f"{nuclide}: {fraction:.4f}")
+```
+
+### C++
+
+```cpp
+#include <iostream>
+#include <map>
+#include <string>
+
+int main() {
+    std::map<std::string, double> composition = {
+        {"U235", 0.0071},
+        {"U238", 0.9929},
+        {"O16", 2.0},
+    };
+
+    for (const auto& [nuclide, fraction] : composition) {
+        std::cout << nuclide << ": " << fraction << "\n";
+    }
+
+    return 0;
+}
+```

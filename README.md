@@ -244,6 +244,10 @@ Import the build integration from its subpath:
 import markdownNegotiation from "@nukehub/docs-kit/integrations/markdown-negotiation";
 ```
 
+## UI Showcase
+
+The template ships with a sample `docs/ui-showcase.mdx` page that demonstrates every UI primitive from `@nukehub/docs-kit`. It is a regular docs page, so it gets the header, sidebar, footer, and table of contents like every other page. Delete or replace it when you use this template for a real project.
+
 ## Customizing MDX shortcodes
 
 The kit registers these shortcodes in `DocLayout` automatically:
