@@ -1,0 +1,192 @@
+---
+title: MDX Components
+sidebar:
+  order: 100
+---
+
+The docs template exposes a small set of shortcodes you can use in MDX files.
+
+## Callout
+
+Use `<Callout>` to highlight notes, tips, warnings, and successes.
+
+```mdx
+<Callout type="tip" title="Tip">
+  Use `npm run sync-docs` before building to refresh content.
+</Callout>
+```
+
+<Callout type="tip" title="Tip">
+  Use `npm run sync-docs` before building to refresh content.
+</Callout>
+
+<Callout type="warning" title="Warning">
+  Remember to update `base` in `src/data/site.ts` when you rename the repository.
+</Callout>
+
+## Tabs
+
+Use `<Tabs>` and `<TabItem>` to group alternative instructions.
+
+```mdx
+<Tabs defaultValue="npm">
+  <TabItem value="npm" label="npm">
+    npm install
+  </TabItem>
+  <TabItem value="pnpm" label="pnpm">
+    pnpm install
+  </TabItem>
+</Tabs>
+```
+
+<Tabs defaultValue="npm">
+  <TabItem value="npm" label="npm">
+    npm install
+  </TabItem>
+  <TabItem value="pnpm" label="pnpm">
+    pnpm install
+  </TabItem>
+</Tabs>
+
+## File tree
+
+Use `<FileTree>` to show directory layouts.
+
+```mdx
+<FileTree
+  items={[
+    { name: "docs", children: [
+      { name: "README.md" },
+      { name: "tutorials", children: [{ name: "getting-started.md" }] },
+    ]},
+    { name: "src", children: [
+      { name: "components", children: [
+        { name: "layout", children: [{ name: "Header.tsx" }] },
+      ]},
+    ]},
+  ]}
+/>
+```
+
+<FileTree
+  items={[
+    {
+      name: "docs",
+      children: [
+        { name: "README.md" },
+        { name: "tutorials", children: [{ name: "getting-started.md" }] },
+      ],
+    },
+    {
+      name: "src",
+      children: [
+        {
+          name: "components",
+          children: [{ name: "layout", children: [{ name: "Header.tsx" }] }],
+        },
+      ],
+    },
+  ]}
+/>
+
+## Diagrams
+
+Use `<Mermaid>` for flowcharts, sequence diagrams, and more.
+
+```mdx
+<Mermaid chart={`
+  flowchart LR
+    A[Write docs] --> B[sync-docs]
+    B --> C[Build]
+    C --> D[Deploy to Pages]
+`} />
+```
+
+<Mermaid
+  chart={`
+    flowchart LR
+      A[Write docs] --> B[sync-docs]
+      B --> C[Build]
+      C --> D[Deploy to Pages]
+  `}
+/>
+
+## Steps
+
+Use `<Steps>` and `<Step>` for numbered procedures.
+
+```mdx
+<Steps>
+  <Step>Install dependencies with `npm install`.</Step>
+  <Step>Run `npm run dev` to start the local server.</Step>
+  <Step>Deploy with `git push origin main`.</Step>
+</Steps>
+```
+
+<Steps>
+  <Step>Install dependencies with `npm install`.</Step>
+  <Step>Run `npm run dev` to start the local server.</Step>
+  <Step>Deploy with `git push origin main`.</Step>
+</Steps>
+
+## Video embeds
+
+Use `<YouTube>` or `<Odysee>` for responsive video embeds.
+
+```mdx
+<YouTube id="dQw4w9WgXcQ" title="Getting started" />
+<Odysee claimName="video-name" claimId="abc123" title="Backup mirror" />
+```
+
+<YouTube id="dQw4w9WgXcQ" title="Getting started" />
+<Odysee claimName="getting-started" claimId="abc123" title="Backup mirror" />
+
+## Figures with lightbox
+
+Use `<ImageFigure>` for screenshots and diagrams. Click the image to open a lightbox.
+
+```mdx
+<ImageFigure
+  src="/docs-template/favicon.svg"
+  alt="Docs template logo"
+  caption="The docs template logo."
+/>
+```
+
+<ImageFigure
+  src="/docs-template/favicon.svg"
+  alt="Docs template logo"
+  caption="The docs template logo."
+/>
+
+## Data tables
+
+Use `<DataTable>` for sortable, searchable, paginated reference tables.
+
+```mdx
+<DataTable
+  columns={[
+    { key: "name", header: "Name", sortable: true },
+    { key: "mass", header: "Mass (u)", align: "right", sortable: true },
+  ]}
+  data={[
+    { name: "U-235", mass: "235.0439" },
+    { name: "U-238", mass: "238.0508" },
+  ]}
+  sortable
+  searchable
+/>
+```
+
+<DataTable
+  columns={[
+    { key: "name", header: "Name", sortable: true },
+    { key: "mass", header: "Mass (u)", align: "right", sortable: true },
+  ]}
+  data={[
+    { name: "U-235", mass: "235.0439" },
+    { name: "U-238", mass: "238.0508" },
+  ]}
+  sortable
+  searchable
+/>
